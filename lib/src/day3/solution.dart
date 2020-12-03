@@ -9,21 +9,7 @@ class SolutionA extends _Day3Solution {
   SolutionA() : super("A");
 
   String getSolution() {
-    const rateX = 3, rateY = 1;
-    var x = 0, y = 0, treesCount = 0;
-    do {
-      x += rateX;
-      y += rateY;
-      if (y < _plotLines.length) {
-        SpaceType type = _plotLines[y].spaceAt(x);
-        // print('$x, $y: $type');
-        if (type == SpaceType.tree) {
-          treesCount++;
-        }
-      }
-    } while (y < _plotLines.length);
-    print('total: $treesCount');
-    return treesCount.toString();
+    return getCount(3, 1).toString();
   }
 }
 
@@ -31,8 +17,35 @@ class SolutionB extends _Day3Solution {
   SolutionB() : super("B");
 
   String getSolution() {
-    return "";
+    var slopes = [
+      [1, 1],
+      [3, 1],
+      [5, 1],
+      [7, 1],
+      [1, 2]
+    ];
+    return slopes
+        .map<int>((s) => getCount(s[0], s[1]))
+        .toList()
+        .reduce((value, element) => element * value)
+        .toString();
   }
+}
+
+// get total space type occurences at slope
+int getCount(int rateX, int rateY, [SpaceType searchType = SpaceType.tree]) {
+  var x = 0, y = 0, count = 0;
+  do {
+    x += rateX;
+    y += rateY;
+    if (y < _plotLines.length) {
+      SpaceType type = _plotLines[y].spaceAt(x);
+      if (type == searchType) {
+        count++;
+      }
+    }
+  } while (y < _plotLines.length);
+  return count;
 }
 
 // get plot line objects from input string
@@ -41,17 +54,6 @@ List<PlotLine> _parseInputLines(String inputLines) => inputLines
     .where((element) => element.isNotEmpty)
     .map<PlotLine>((l) => PlotLine.fromString(l))
     .toList();
-/*var _plotLines = _parseInputLines("""..##.......
-#...#...#..
-.#....#..#.
-..#.#...#.#
-.#...##..#.
-..#.##.....
-.#.#.#....#
-.#........#
-#.##...#...
-#...##....#
-.#..#...#.#""");*/
 var _plotLines = _parseInputLines(inputsDay3);
 
 // convert string to List<SpaceType>
@@ -71,6 +73,8 @@ class PlotLine {
 
   // get space type at x-index
   SpaceType spaceAt(int index) => _template[index % _template.length];
+
+  // get char at x-index
   String charAt(int index) =>
       spaceAt(index) == SpaceType.tree ? _charTree : _charOpen;
 }
