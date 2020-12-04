@@ -3,8 +3,6 @@ abstract class AdventSolution {
   final String name;
   AdventSolution(this.day, this.name);
 
-  String get solution => getSolution();
-
   // implement in subclass
   String getSolution();
 
@@ -13,6 +11,6 @@ abstract class AdventSolution {
     return "Advent Of Code, "
         "Day $day "
         "${name.isNotEmpty ? name : ''} "
-        "solution: $solution";
+        "solution: ${getSolution()}";
   }
 }
