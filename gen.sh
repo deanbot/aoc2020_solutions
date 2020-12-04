@@ -1,5 +1,18 @@
 #!/bin/sh
 # Generate scaffolding for future solutions
+
+
+f="final List<Object> solutions = ["
+for i in {1..24};
+do
+  f="$f
+    day${i}.SolutionA(),
+    day${i}.SolutionB(),"
+done
+f="$f
+    ];"
+echo $f | tee lib/src/solutions.dart
+
 for i in {1..24};
 do
   dir="lib/src/day$i"
@@ -12,7 +25,7 @@ do
   fi
 
   f2="$dir/solution.dart"
-  # if [ ! -f $f2 ]; then
+  if [ ! -f $f2 ]; then
     echo "import 'package:aoc2020_solutions/src/adventSolution.dart';
 
 import 'inputs.dart';
@@ -41,5 +54,5 @@ class SolutionB extends _Day${i}Solution {
   }
 }
 " >> $f2
-  # fi
+  fi
 done

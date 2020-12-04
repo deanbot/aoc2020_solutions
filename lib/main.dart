@@ -3,17 +3,10 @@ import 'package:aoc2020_solutions/src/day2/solution.dart' as day2;
 import 'package:aoc2020_solutions/src/day3/solution.dart' as day3;
 import 'package:flutter/material.dart';
 
-void main() {
-  final List<Object> solutions = [
-    day1.SolutionA(),
-    day1.SolutionB(),
-    day2.SolutionA(),
-    day2.SolutionB(),
-    day3.SolutionA(),
-    day3.SolutionB(),
-  ];
-  solutions.forEach((s) => print(s.toString()));
+import 'solutions.dart';
 
+void main() {
+  solutions.forEach((s) => print(s.toString()));
   runApp(App());
 }
 
