@@ -25,4 +25,3 @@ class SolutionB extends _Day7Solution {
     return "";
   }
 }
-

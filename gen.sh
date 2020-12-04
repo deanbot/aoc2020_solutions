@@ -27,7 +27,7 @@ do
   f1="$dir/inputs.dart"
   if [ ! -f $f1 ]; then
     echo "const inputsDay${i} = \"\"\"
-\"\"\";" >> $f1
+\"\"\";" > $f1
   fi
 
   f2="$dir/solution.dart"
@@ -59,6 +59,6 @@ class SolutionB extends _Day${i}Solution {
     return \"\";
   }
 }
-" >> $f2
+" > $f2
   fi
 done
