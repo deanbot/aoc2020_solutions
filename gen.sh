@@ -1,17 +1,23 @@
 #!/bin/sh
 # Generate scaffolding for future solutions
 
-
-f="final List<Object> solutions = ["
 for i in {1..24};
 do
-  f="$f
-    day${i}.SolutionA(),
-    day${i}.SolutionB(),"
+  f+="import 'day${i}/solution.dart' as day${i};
+"
 done
-f="$f
-    ];"
-echo $f | tee lib/src/solutions.dart
+
+f+="
+final List<Object> solutions = ["
+for i in {1..24};
+do
+  f+="
+  day${i}.SolutionA(),
+  day${i}.SolutionB(),"
+done
+f+="
+];"
+echo "$f" > lib/src/solutions.dart
 
 for i in {1..24};
 do

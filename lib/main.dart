@@ -1,9 +1,6 @@
-import 'package:aoc2020_solutions/src/day1/solution.dart' as day1;
-import 'package:aoc2020_solutions/src/day2/solution.dart' as day2;
-import 'package:aoc2020_solutions/src/day3/solution.dart' as day3;
 import 'package:flutter/material.dart';
 
-import 'solutions.dart';
+import 'src/solutions.dart';
 
 void main() {
   solutions.forEach((s) => print(s.toString()));
@@ -28,11 +25,13 @@ class AdventSolutionsPage extends StatelessWidget {
         title: Text('Advent of Code Solutions'),
       ),
       body: Stack(
-        children: [AdventDay1(), AdventDay2(), AdventDay3()],
-      ),
+          // children: [AdventDay1(), AdventDay2(), AdventDay3()],
+          ),
     );
   }
 }
+
+/*
 
 class AdventDay1 extends StatelessWidget {
   final solutionA = day1.SolutionA();
@@ -78,3 +77,5 @@ class AdventDay3 extends StatelessWidget {
     );
   }
 }
+
+*/
