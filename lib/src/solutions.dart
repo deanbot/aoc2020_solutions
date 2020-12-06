@@ -2,7 +2,7 @@ import 'day1/solution.dart' as day1;
 import 'day2/solution.dart' as day2;
 import 'day3/solution.dart' as day3;
 import 'day4/solution.dart' as day4;
-// import 'day5/solution.dart' as day5;
+import 'day5/solution.dart' as day5;
 // import 'day6/solution.dart' as day6;
 // import 'day7/solution.dart' as day7;
 // import 'day8/solution.dart' as day8;
@@ -32,8 +32,8 @@ final List<Object> solutions = [
   day3.SolutionB(),
   day4.SolutionA(),
   day4.SolutionB(),
-  // day5.SolutionA(),
-  // day5.SolutionB(),
+  day5.SolutionA(),
+  day5.SolutionB(),
   // day6.SolutionA(),
   // day6.SolutionB(),
   // day7.SolutionA(),
