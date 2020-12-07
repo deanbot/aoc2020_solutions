@@ -12,22 +12,17 @@ List<Group> _inputs = _parseInputs(inputsDay6);
 // custom declarations form group
 class Group {
   final List<String> uniqueAnswers;
-  List<String> unionAnswers = [];
+  final List<String> unionAnswers;
   Group.fromString(String input)
       // flatten and remove duplicates
       : uniqueAnswers =
-            input.split('\n').expand((e) => e.split('')).toSet().toList() {
-    // add each char in each line to union answers if char is present in every line then remove duplicates
-    List<String> groupAnswers = input.split('\n');
-    groupAnswers.forEach((lineAnswers) {
-      lineAnswers.split('').forEach((character) {
-        if (groupAnswers.every((line) => line.indexOf(character) != -1)) {
-          unionAnswers.add(character);
-        }
-      });
-    });
-    unionAnswers = unionAnswers.toSet().toList();
-  }
+            input.split('\n').expand((e) => e.split('')).toSet().toList(),
+        // convert to sets of letters and reduce via intersection
+        unionAnswers = input
+            .split('\n')
+            .map((e) => e.split('').toSet())
+            .reduce((value, element) => value.intersection(element))
+            .toList();
 }
 
 abstract class _Day6Solution extends AdventSolution {
