@@ -79,24 +79,16 @@ List<BagRule> getContainers(List<String> searchFor, List<BagRule> containers) {
   }
 }
 
-int getChildCount(String searchFor) {
-  // get contents of bag by color
-  List<BagContents> contents =
-      _inputs.firstWhere((e) => e.color == searchFor).contents;
-  return contents.fold(
-      0,
-      (previousValue, element) =>
-          previousValue +
-          element.quantity +
-          element.quantity * getChildCount(element.color));
-}
+int getChildCount(String searchFor) => _inputs
+    .firstWhere((e) => e.color == searchFor)
+    .contents
+    .fold(0, (p, e) => p + e.quantity + e.quantity * getChildCount(e.color));
 
 class SolutionA extends _Day7Solution {
   SolutionA() : super('A');
 
   String getSolution() {
-    var containers = getContainers(["shiny gold"], []);
-    return containers.length.toString();
+    return getContainers(["shiny gold"], []).length.toString();
   }
 }
 
